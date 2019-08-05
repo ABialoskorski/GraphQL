@@ -1,51 +1,60 @@
-import React, { Component } from "react";
-import { gql } from "apollo-boost";
-import { graphql } from "react-apollo";
-
-const getFilmsQuery = gql`
-  {
-    allFilms {
-      title
-    }
-  }
-`;
-
-
-
-class FilmList extends Component {
-    state= {
-        Films: []
-    };
-  // displayFilms() {
-  // var data = this.props.data;
-  //   return data.allFilms.map(film => {
-  //     return <li key={film.id}>{film.title}</li>;
-  //   });
-  // }
-    componentDidMount() {
-        this.setState({
-            Films: this.props.data.allFilms
-        })
-    }
-
-    render() {
-    console.log(this.props.data.allFilms);
-    console.log("STATE " + this.state)
-    return (
-      <div>
-        {/*<ul id="film-list">{this.props.data.allFilms}</ul>*/}
-        {/*  <ul>*/}
-        {/*      {this.props.data.allFilms.map(film => (*/}
-        {/*          <div key={film.id}>*/}
-        {/*              <li>*/}
-        {/*                  {film.id}: {film.title}*/}
-        {/*              </li>*/}
-        {/*          </div>*/}
-        {/*      ))}*/}
-        {/*  </ul>*/}
-      </div>
-    );
-  }
-}
-
-export default graphql(getFilmsQuery)(FilmList);
+// import React, { Component } from "react";
+// import { gql } from "apollo-boost";
+// import { graphql } from "react-apollo";
+//
+// const getFilmsQuery = gql`
+//   {
+//     allFilms {
+//       title
+//     }
+//   }
+// `;
+//
+// class FilmList extends Component {
+//
+//   //   displayFilms() {
+//   //   var data = this.props.data;
+//   //   return data.allFilms.map(film => {
+//   //     return <li key={film.id}>{film.title}</li>;
+//   //   });
+//   // }
+//   // films= null;
+//   //   componentDidMount() {
+//   //       this.films = this.displayFilms();
+//   //   }
+//
+//     render() {
+//         console.log(this.props.data, this.props.isLoading);
+//         console.log(this.props.data.allFilms);
+//     return (
+//         <div>
+//             {this.props.isLoading ? <div>Loading Data</div>:<div>hello DATA{this.props.data.allFilms.map(film => film.title)}</div>
+//             }
+//         </div>
+//         // <div>
+//         //     <ul id="book-list">
+//         //         {/*{ this.films }*/}
+//         //         {this.props.data.allFilms.map(film => (
+//         //             <div key={film.id}>
+//         //                 <li>
+//         //                     {film.id}: {film.name}
+//         //                 </li>
+//         //             </div>
+//         //         ))}
+//         //     </ul>
+//         // </div>
+//     );
+//   }
+// }
+//
+// graphql(FilmList, {
+//     name: 'data' ,
+//     props : ({data}) => {
+//         return {
+//             data,
+//             isLoading:data['networkStatus']==1 || data['networkStatus']==2 || data['networkStatus']==4
+//         }
+//     }
+// });
+//
+// export default graphql(getFilmsQuery)(FilmList);
