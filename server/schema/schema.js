@@ -113,13 +113,13 @@ const Mutation = new GraphQLObjectType({
           args: {
               name: { type: GraphQLString },
               genre: { type: GraphQLString },
-              authorId: { type: GraphQLID }
+              id: { type: GraphQLID }
           },
           resolve(parent, args) {
               let newBook = {
                   name: args.name,
                   genre: args.genre,
-                  authorId: args.authorId
+                  id: args.id
               };
               books.push(newBook);
               console.log(books);
