@@ -105,7 +105,7 @@ const Mutation = new GraphQLObjectType({
                     age: args.age,
                     id: args.id
                 });
-                return authors.push(newAuthor)
+                return this.authors.push(newAuthor)
             }
         }
     }
