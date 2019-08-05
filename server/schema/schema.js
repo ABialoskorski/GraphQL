@@ -20,9 +20,9 @@ var books = [
 ];
 
 var authors = [
-    { name: 'Patrick Rothfuss', age: 44, id: '1' },
-    { name: 'Brandon Sanderson', age: 42, id: '2' },
-    { name: 'Terry Pratchett', age: 66, id: '3' }
+    { name: 'Patrick Rothfuss', age: 44, id: 1},
+    { name: 'Brandon Sanderson', age: 42, id: 2 },
+    { name: 'Terry Pratchett', age: 66, id: 3 }
 ];
 
 const BookType = new GraphQLObjectType({
@@ -43,9 +43,9 @@ const BookType = new GraphQLObjectType({
 const AuthorType = new GraphQLObjectType({
     name: 'Author',
     fields: ( ) => ({
-        id: { type: GraphQLID },
         name: { type: GraphQLString },
         age: { type: GraphQLInt },
+        id: { type: GraphQLID },
         books: {
             type: new GraphQLList(BookType),
             resolve(parent, args){
@@ -100,12 +100,13 @@ const Mutation = new GraphQLObjectType({
 
             },
             resolve(parent,args){
-                let newAuthor = new Author({
+                let newAuthor = {
                     name: args.name,
                     age: args.age,
                     id: args.id
-                });
-                return this.authors.push(newAuthor)
+                };
+                authors.push(newAuthor)
+                console.log(authors);
             }
         }
     }
