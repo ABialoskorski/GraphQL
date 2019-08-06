@@ -12,9 +12,8 @@ const QUERY = gql`
   }
 `;
 
-class LinkList extends Component {
+class FilmsList extends Component {
   render() {
-    console.log(this.props.data.allFilms);
     return (
       <Query query={QUERY}>
         {({ loading, error, data }) => {
@@ -36,5 +35,5 @@ class LinkList extends Component {
   }
 }
 
-// export default LinkList;
-export default graphql(QUERY)(LinkList);
+// export default FilmsList;
+export default graphql(QUERY)(FilmsList);
