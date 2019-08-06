@@ -1,38 +1,34 @@
 import React, { Component } from "react";
-import Link from "./Link";
 import gql from "graphql-tag";
-import { Query } from "react-apollo";
+import { Query, graphql } from "react-apollo";
 
 const QUERY = gql`
-  {
-    feed {
-      links {
-        id
-        createdAt
-        url
-        description
-      }
+  query {
+    allFilms {
+      title
+      episodeId
+      director
     }
   }
 `;
 
 class LinkList extends Component {
   render() {
-    const linksToRender = [];
-
+    console.log(this.props.data.allFilms);
     return (
       <Query query={QUERY}>
         {({ loading, error, data }) => {
           if (loading) return <div>Loading</div>;
           if (error) return <div>Error</div>;
-          const linksToRender = data.feed.links;
-
-          return (
-            <div>
-              {linksToRender.map(link => (
-                <Link key={link.id} link={link} />
-              ))}
-            </div>
+          let filmsToRender = data;
+          return(
+           <div>
+             {data.allFilms.map(film => (
+               <ul key={film.episodeId}>
+                 <li>{film.title} by {film.director}</li>
+                </ul>
+             ))}
+           </div>
           );
         }}
       </Query>
@@ -40,4 +36,5 @@ class LinkList extends Component {
   }
 }
 
-export default LinkList;
+// export default LinkList;
+export default graphql(QUERY)(LinkList);

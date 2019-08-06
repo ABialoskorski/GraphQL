@@ -3,7 +3,6 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 //components
 import BookList from "./Components/BookList";
-import Link from "./Components/Link";
 import LinkList from "./Components/LinkList";
 //apollo client setup
 const client = new ApolloClient({
@@ -15,7 +14,7 @@ class App extends Component {
     return (
       <ApolloProvider client={client}>
         <div id="main">
-          <h1>Hello World!</h1>
+          <h1>GraphQL</h1>
           {/*<BookList />*/}
           <LinkList />
         </div>
