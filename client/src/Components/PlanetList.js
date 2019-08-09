@@ -15,6 +15,9 @@ const PLANET_QUERY = gql`
 
 class PlanetList extends Component {
   render() {
+    const List = styled.ul`
+      list-style-type: none;
+    `;
     const Paragraph = styled.p`
       font-size: 24px;
       text-align: center;
@@ -27,6 +30,7 @@ class PlanetList extends Component {
       font-size: 18px;
       color: #1a9666;
     `;
+
     return (
       <Query query={PLANET_QUERY}>
         {({ loading, error, data }) => {
@@ -38,14 +42,23 @@ class PlanetList extends Component {
               <Paragraph>
                 <p>Planet List:</p>
               </Paragraph>
-              <ul key={PlanetList.allPlanets.id}>
+              <List key={PlanetList.allPlanets.id}>
                 {PlanetList.allPlanets.map(planet => (
                   <li>
                     <Planet>{planet.name}</Planet> with{" "}
-                    <Population>{planet.population}</Population> population
+                    <Population>{planet.population}</Population> people
+                    <br/>Climate:
+                    {(() => {
+                      if (!planet.climate) {
+                        return <span> no climate info</span>;
+                      }
+                      return planet.climate.map(clima => {
+                        return <span> {clima}</span>;
+                      });
+                    })()}
                   </li>
                 ))}
-              </ul>
+              </List>
             </div>
           );
         }}
