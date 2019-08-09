@@ -5,6 +5,7 @@ import { ApolloProvider } from "react-apollo";
 //components
 import FilmsList from "./Components/FilmsList";
 import AddFilm from "./Components/AddFilm";
+import PlanetList from "./Components/PlanetList";
 
 //apollo client setup
 const client = new ApolloClient({
@@ -19,6 +20,8 @@ class App extends Component {
           <h1>GraphQL</h1>
           <AddFilm />
           <FilmsList />
+          <br/>
+          <PlanetList/>
         </div>
       </ApolloProvider>
     );

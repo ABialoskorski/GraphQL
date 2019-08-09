@@ -19,15 +19,17 @@ class FilmsList extends Component {
         {({ loading, error, data }) => {
           if (loading) return <div>Loading</div>;
           if (error) return <div>Error</div>;
-          let filmsToRender = data;
-          return(
-           <div>
-             {data.allFilms.map(film => (
-               <ul key={film.episodeId}>
-                 <li>{film.title} by {film.director}</li>
-                </ul>
-             ))}
-           </div>
+          let FilmsToRender = data;
+          return (
+            <div>
+              <ul key={FilmsToRender.allFilms.episodeId}>
+                {FilmsToRender.allFilms.map(film => (
+                  <li>
+                    {film.episodeId} {film.title} by {film.director}
+                  </li>
+                ))}
+              </ul>
+            </div>
           );
         }}
       </Query>
